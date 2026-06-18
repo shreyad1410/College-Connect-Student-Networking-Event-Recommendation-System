@@ -1,94 +1,195 @@
-# college-event-social-network-system
-A Java-based social networking system that connects college students through shared interests and event discovery.
+# College Connect - Student Networking & Event Discovery Platform
 
-# College Social Networking System
+## Overview
 
-## Introduction
-The College Social Networking System is designed to help students connect with peers who share similar interests and stay updated about events happening in their college. The platform focuses on interest-based connections, allowing students to build meaningful networks within their academic environment.
+College Connect is a Java-based console application that enables students to build academic and professional connections within their college community. The platform combines social networking, friend recommendations, note sharing, and personalized event discovery into a single system.
 
-The system also includes an event feature where students can explore college events based on their interests or keywords, encouraging participation and community engagement.
+Users can create profiles, connect with peers, discover students with similar interests, share notes with friends, and receive event recommendations tailored to their interests. Administrators can manage events and maintain event listings for different colleges.
 
 ---
 
-## Problem Definition
-In most colleges, students do not have a centralized platform to connect with peers who share similar interests or to stay informed about events within their institution.
+## Features
 
-Information about activities, clubs, and opportunities is often scattered across notice boards, chat groups, or social media platforms. This makes it difficult for students to discover relevant events or communities.
+### User Management
+- User registration and login authentication
+- Profile creation and editing
+- Personal information, bio, interests, and professional details management
+- Input validation and exception handling
 
-This project solves this problem by creating a system where students can build interest-based connections and discover college events curated according to their interests and keywords.
+### Student Networking
+- Send and receive connection requests
+- Accept, decline, or withdraw requests
+- View and manage friend lists
+- Remove existing connections
 
----
+### Friend Recommendation System
+- Recommendations based on mutual connections
+- Recommendations based on common interests
+- Priority ranking using a custom Max Heap implementation
+- Displays the most relevant potential connections
 
-## Scope of the System
-The system allows students to:
+### User Search
+- Search users by name
+- Search users by interests
+- View mutual friends and matching interests
 
-- Create and manage profiles  
-- Add and remove friends  
-- Search users by name or interests  
-- View updates or notes from friends  
-- Discover events based on interests, keywords, or date  
+### Notes Sharing
+- Create and update personal notes
+- View notes shared by friends
 
-Admins can:
+### Event Management
 
-- Add events  
-- Edit event details  
-- Manage events within their own college  
+#### Admin Features
+- Add new events
+- Edit event details
+- Mark events as completed
+- View all events
 
-Future improvements may include real-time chat and notifications.
+#### User Features
+- View events by date
+- View events within a selected date range
+- Receive personalized event recommendations
+- Search events using keywords
 
----
+### Personalized Event Recommendations
+- Matches user interests with event keywords
+- Sorts events based on relevance
+- Supports additional keyword-based filtering
 
-## Data Structures Used
-
-### HashMap
-Used for storing user profiles, events, and friend lists.  
-Provides fast access and retrieval with **O(1)** average time complexity.
-
-### ArrayList
-Used for storing dynamic collections such as interests, keywords, and friend lists.
-
-### Arrays
-Used for temporary storage when reading data from text files.
-
-### HashSet
-Used for storing unique elements like friend IDs and keywords and for finding intersections during recommendations.
-
-### Custom Max Heap
-Used for recommending users based on mutual friends or shared interests.
-
-### Graph (Conceptual)
-Friendships form a graph where each user is a node and each friendship is an edge.
-
-
----
-## How to Run
-
-1. Compile the program
-   
-javac osl2.java
-
-2. Run the program
-   
-java osl2
-
-Make sure all text files are present in the same folder.
+### File-Based Data Persistence
+Stores and retrieves:
+- User profiles
+- Friend connections
+- Connection requests
+- User notes
+- Event records
 
 ---
 
 ## Technologies Used
+
 - Java
+- Object-Oriented Programming (OOP)
+- Java Collections Framework
+  - HashMap
+  - HashSet
+  - ArrayList
+- Custom Max Heap
 - File Handling
-- HashMap
-- ArrayList
-- HashSet
-- Custom Heap
+- Exception Handling
+- LocalDate API
+
+---
+
+## System Architecture
+
+| Class | Responsibility |
+|---------|---------------|
+| User | User profile management and networking operations |
+| FileHandler | File storage and retrieval operations |
+| Recommendation | Stores recommendation details |
+| MaxHeap | Prioritizes recommendation results |
+| Event | Stores event information |
+| eventDisplay | Event filtering and recommendation logic |
+| Admin | Event administration |
+| Main | Application entry point |
+
+---
+
+## Recommendation Engine
+
+### Friend Recommendations
+The platform recommends users based on:
+- Number of mutual friends
+- Number of common interests
+
+A custom Max Heap data structure is used to rank recommendations and display the most relevant users first.
+
+### Event Recommendations
+The platform recommends events by:
+- Matching user interests with event keywords
+- Filtering events belonging to the user's college
+- Ranking events based on keyword relevance
+
+---
+
+## Project Structure
+
+```text
+profile.txt      -> User profile data
+friends.txt      -> Friend connections
+requests.txt     -> Pending connection requests
+notes.txt        -> User notes
+events.txt       -> Event information
+```
+
+---
+
+## How to Run
+
+### Prerequisites
+- Java JDK 8 or above
+- Any Java IDE (IntelliJ IDEA, Eclipse, VS Code) or terminal
+
+### Compile
+
+```bash
+javac Main.java
+```
+
+### Run
+
+```bash
+java Main
+```
+
+---
+
+## Application Workflow
+
+### User Side
+1. Register and create a profile
+2. Login to the platform
+3. Add interests and profile details
+4. Discover students through recommendations
+5. Send and manage connection requests
+6. View friends and shared notes
+7. Explore personalized event recommendations
+
+### Admin Side
+1. Login using admin credentials
+2. Add and manage events
+3. Update event information
+4. Mark events as completed
+5. Monitor event listings
+
+---
+
+## Concepts Demonstrated
+
+- Object-Oriented Programming
+- Data Structures & Algorithms
+- Priority Queues (Max Heap)
+- Recommendation Systems
+- Searching & Filtering
+- File-Based Data Management
+- Exception Handling
+- Modular Software Design
 
 ---
 
 ## Future Enhancements
 
-- Chat system between users
-- Real-time notifications for events
-- Improved recommendation algorithms
-- GUI or web interface
+- GUI using JavaFX or Swing
+- Database integration (MySQL/PostgreSQL)
+- Password encryption
+- Real-time messaging system
+- Event registration functionality
+- Notification system
+- Web and mobile application versions
 
+---
+
+## Authors
+
+Developed as a Java-based academic project to explore networking systems, recommendation algorithms, event management, and file-based data persistence.
